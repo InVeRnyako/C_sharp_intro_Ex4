@@ -2,17 +2,17 @@
 // 1, 2, 5, 7, 19 -> [1, 2, 5, 7, 19]
 // 6, 1, 33 -> [6, 1, 33]
 
-int[] array = GenerateArrayWithNumbers(8, 0, 100);
+// Вариант с вводом чисел пользователем
+
+int[] array = GetArrayFromUser(8);
 Console.WriteLine($"{ArrayToString(array)} -> [{ArrayToString(array)}]");
 
-static int[] GenerateArrayWithNumbers(int arraySize, int lowLimit, int highLimitIncluded)
+static int[] GetArrayFromUser(int arraySize)
 {
-    Random random = new Random();
     int[] array = new int[arraySize];
-
     for (int i = 0; i < arraySize; i++)
     {
-        array[i] = random.Next(lowLimit, highLimitIncluded + 1);
+        array[i] = GetIntFromUser($"Введите элемент массива #{i + 1}: ");
     }
     return array;
 }
@@ -26,4 +26,16 @@ static string ArrayToString(int[] array)
         result = result + $", {array[i]}";
     }
     return result;
+}
+
+static int GetIntFromUser(string userMsg)
+{
+    while(true)
+    {
+        Console.Write(userMsg);
+        if (int.TryParse(Console.ReadLine(), out int num))
+            return num;
+        
+        Console.WriteLine("Ошибка ввода!");
+    }
 }
