@@ -2,7 +2,7 @@
 // 1, 2, 5, 7, 19 -> [1, 2, 5, 7, 19]
 // 6, 1, 33 -> [6, 1, 33]
 
-int[] array = GenerateArrayWithNumbers(18, 0, 2);
+int[] array = GenerateArrayWithNumbers(18, 0, 100);
 Console.WriteLine($"{ArrayToString(array)} -> [{ArrayToString(array)}]");
 
 static int[] GenerateArrayWithNumbers(int arraySize, int lowLimit, int highLimitIncluded)
